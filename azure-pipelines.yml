@@ -3,10 +3,10 @@
 strategy:
   matrix:
     mac:
-      displayName: macos
+      displayName: MacOS-Build
       imageName: 'macos-10.13'
     windows:
-      displayName: windows
+      displayName: Windows-Build
       imageName: 'vs2017-win2016'
 
 pool:
@@ -17,10 +17,9 @@ steps:
   inputs:
     versionSpec: '8.x'
 
-- script: |
-    npm install
-    npm run dist:dir
-  displayName: 'npm install and build'
+- script: npm install
+    
+- script: npm run dist:dir
 
 - task: CopyFiles@2
   inputs:
@@ -32,4 +31,4 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: $(matrix.displayName)-dist
+    ArtifactName: $(displayName)
