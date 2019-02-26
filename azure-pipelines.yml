@@ -3,8 +3,10 @@
 strategy:
   matrix:
     mac:
+      displayName: macos
       imageName: 'macos-10.13'
     windows:
+      displayName: windows
       imageName: 'vs2017-win2016'
 
 pool:
@@ -30,4 +32,4 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: dist
+    ArtifactName: $(matrix.displayName)-dist
