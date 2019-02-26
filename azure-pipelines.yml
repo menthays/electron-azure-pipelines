@@ -36,8 +36,8 @@ steps:
 - task: GithubRelease@0 
   displayName: 'Create GitHub Release'      
   inputs:
-    githubConnection: menthays
-    repositoryName: menthays/electron-azure-pipelines
+    githubConnection: 'azure-pipelines-release'
+    repositoryName: 'menthays/electron-azure-pipelines'
     tagSource: manual
     tag: $(Build.BuildNumber)      
     assets: |
