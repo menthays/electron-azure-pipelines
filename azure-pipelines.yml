@@ -32,13 +32,3 @@ steps:
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: $(displayName)
-
-- task: GithubRelease@0 
-  displayName: 'Create GitHub Release'      
-  inputs:
-    githubConnection: 'azure-pipelines-release'
-    repositoryName: 'menthays/electron-azure-pipelines'
-    tagSource: manual
-    tag: $(Build.BuildNumber)      
-    assets: |
-         $(Build.ArtifactStagingDirectory)/*
